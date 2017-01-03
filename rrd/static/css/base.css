@@ -112,7 +112,7 @@ a.tab_current:hover {
 
 .loading2 {
     -moz-box-sizing: border-box;
-    background: url("/static/img/loading2.gif") no-repeat scroll center center rgba(0, 0, 0, 0);
+    background: url("/dashboard/static/img/loading2.gif") no-repeat scroll center center rgba(0, 0, 0, 0);
     height: 100%;
     left: 0;
     position: fixed;

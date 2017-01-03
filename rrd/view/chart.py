@@ -69,7 +69,7 @@ def chart_before():
         g.limit = int(request.args.get("limit") or 0)
         g.page = int(request.args.get("page") or 0)
 
-@app.route("/chart", methods=["POST",])
+@app.route("/dashboard/chart", methods=["POST",])
 def chart():
     endpoints = request.form.getlist("endpoints[]") or []
     counters = request.form.getlist("counters[]") or []
@@ -89,11 +89,11 @@ def chart():
 
     return json.dumps(ret)
 
-@app.route("/chart/big", methods=["GET",])
+@app.route("/dashboard/chart/big", methods=["GET",])
 def chart_big():
     return render_template("chart/big_ng.html", **locals())
 
-@app.route("/chart/embed", methods=["GET",])
+@app.route("/dashboard/chart/embed", methods=["GET",])
 def chart_embed():
     w = request.args.get("w")
     w = int(w) if w else 600
@@ -101,7 +101,7 @@ def chart_embed():
     h = int(h) if h else 200
     return render_template("chart/embed.html", **locals())
 
-@app.route("/chart/h", methods=["GET"])
+@app.route("/dashboard/chart/h", methods=["GET"])
 def multi_endpoints_chart_data():
     if not g.id:
         abort(400, "no graph id given")
@@ -183,7 +183,7 @@ def multi_endpoints_chart_data():
 
     return json.dumps(ret)
 
-@app.route("/chart/k", methods=["GET"])
+@app.route("/dashboard/chart/k", methods=["GET"])
 def multi_counters_chart_data():
     if not g.id:
         abort(400, "no graph id given")
@@ -265,7 +265,7 @@ def multi_counters_chart_data():
 
     return json.dumps(ret)
 
-@app.route("/chart/a", methods=["GET"])
+@app.route("/dashboard/chart/a", methods=["GET"])
 def multi_chart_data():
     if not g.id:
         abort(400, "no graph id given")
@@ -346,7 +346,7 @@ def multi_chart_data():
 
     return json.dumps(ret)
 
-@app.route("/charts", methods=["GET"])
+@app.route("/dashboard/charts", methods=["GET"])
 def charts():
     if not g.id:
         abort(400, "no graph id given")
@@ -387,7 +387,7 @@ def charts():
 
             p["id"] = id_
             chart_ids.append(int(id_))
-            src = "/chart/h?" + urllib.urlencode(p)
+            src = "/dashboard/chart/h?" + urllib.urlencode(p)
             chart_urls.append(src)
     elif g.graph_type == GRAPH_TYPE_HOST:
         for x in counters:
@@ -396,14 +396,14 @@ def charts():
                 continue
             p["id"] = id_
             chart_ids.append(int(id_))
-            src = "/chart/h?" + urllib.urlencode(p)
+            src = "/dashboard/chart/h?" + urllib.urlencode(p)
             chart_urls.append(src)
     else:
         id_ = TmpGraph.add(endpoints, counters)
         if id_:
             p["id"] = id_
             chart_ids.append(int(id_))
-            src = "/chart/a?" + urllib.urlencode(p)
+            src = "/dashboard/chart/a?" + urllib.urlencode(p)
             chart_urls.append(src)
 
     return render_template("chart/multi_ng.html", **locals())

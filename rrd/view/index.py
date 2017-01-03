@@ -2,6 +2,6 @@
 from flask import render_template
 from rrd import app
 
-@app.route("/")
+@app.route("/dashboard")
 def index():
     return render_template("index.html", **locals())

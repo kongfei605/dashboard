@@ -5,7 +5,7 @@ function fn_list_endpoints()
     var limit = $("#endpoint-limit").val();
 
     $(".loading").show();
-    $.getJSON("/api/endpoints", {q: qs, tags: tags, limit:limit, _r:Math.random()}, function(ret){
+    $.getJSON("/dashboard/api/endpoints", {q: qs, tags: tags, limit:limit, _r:Math.random()}, function(ret){
                 $(".loading").hide();
                 if (!ret.ok) {
                     alert(ret.msg);
@@ -48,7 +48,7 @@ function fn_list_counters(){
     $(".loading").show();
     $.ajax({
         method: "POST",
-        url: "/api/counters",
+        url: "/dashboard/api/counters",
         dataType: "json",
         data: {"endpoints": JSON.stringify(hosts), "q": qs, "limit": limit, "_r": Math.random()},
         success:function(ret){
@@ -156,13 +156,13 @@ function fn_show_chart(counter)
     checked_items.push(counter);
     var w = window.open();
     $.ajax({
-        url: "/chart",
+        url: "/dashboard/chart",
         dataType: "json",
         method: "POST",
         data: {"endpoints": checked_hosts, "counters": checked_items, "graph_type": "h", "_r": Math.random()},
         success: function(ret) {
             if (ret.ok) {
-                setTimeout(function(){w.location='/chart/big?id='+ret.id;}, 0);
+                setTimeout(function(){w.location='/dashboard/chart/big?id='+ret.id;}, 0);
             } else {
                 alert("请求出错了");
             }
@@ -202,13 +202,13 @@ function fn_show_all(graph_type)
 
     var w = window.open();
     $.ajax({
-        url: "/chart",
+        url: "/dashboard/chart",
         dataType: "json",
         method: "POST",
         data: {"endpoints": checked_hosts, "counters": checked_items, "graph_type": graph_type, "_r": Math.random()},
         success: function(ret) {
             if (ret.ok) {
-                setTimeout(function(){w.location="/charts?id="+ret.id+"&graph_type="+graph_type;}, 0);
+                setTimeout(function(){w.location="/dashboard/charts?id="+ret.id+"&graph_type="+graph_type;}, 0);
             }else {
                 alert("请求出错了");
             }

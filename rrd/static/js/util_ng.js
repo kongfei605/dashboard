@@ -304,7 +304,7 @@ function FlotServ($http, $window, $q) {
                 p.end_s = +p.end_s/1000;
             }
             p.id = id;
-            return $http({method: 'GET', url: '/chart/' + p.graph_type, params: p});
+            return $http({method: 'GET', url: '/dashboard/chart/' + p.graph_type, params: p});
         });
         return $q.all(reqs);
     };

@@ -8,7 +8,7 @@ from rrd.model.endpoint import Endpoint
 from rrd.model.endpoint_counter import EndpointCounter
 from rrd.model.graph import TmpGraph
 
-@app.route("/api/endpoints")
+@app.route("/dashboard/api/endpoints")
 def api_endpoints():
     ret = {
         "ok": False,
@@ -44,7 +44,7 @@ def api_endpoints():
     return json.dumps(ret)
 
 
-@app.route("/api/counters", methods=["POST"])
+@app.route("/dashboard/api/counters", methods=["POST"])
 def api_get_counters():
     ret = {
         "ok": False,
@@ -87,7 +87,7 @@ def api_get_counters():
 
     return json.dumps(ret)
 
-@app.route("/api/tmpgraph", methods=["POST",])
+@app.route("/dashboard/api/tmpgraph", methods=["POST",])
 def api_create_tmpgraph():
     d = request.data
     jdata = json.loads(d)

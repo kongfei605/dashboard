@@ -3,7 +3,7 @@ import os
 from flask import Flask
 
 #-- create app --
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static',static_url_path='/dashboard/static')
 app.config.from_object("rrd.config")
 
 @app.errorhandler(Exception)

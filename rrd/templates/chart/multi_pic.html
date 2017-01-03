@@ -90,7 +90,7 @@
                 var pic_src = obj.attr("pic-href");
                 var href = $.query.load(pic_src);
                 href = href.remove("start_s").remove("end_s").remove("pic_height").remove("pic_width");
-                obj.attr("href",  "/chart/big" + href.toString());
+                obj.attr("href",  "/dashboard/chart/big" + href.toString());
             });
 
             $("#go").click(function(){

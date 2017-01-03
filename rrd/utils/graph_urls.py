@@ -76,9 +76,9 @@ def _generate_graph_urls(graph, counters, endpoint_list, start, end):
             new_g = copy.deepcopy(graph)
             new_g.counters = c
             if end:
-                new_g.src = '''/chart/h?id=%s&start=%s&end=%s''' %(tmp_graph_id, start or (0-graph.timespan), end)
+                new_g.src = '''/dashboard/chart/h?id=%s&start=%s&end=%s''' %(tmp_graph_id, start or (0-graph.timespan), end)
             else:
-                new_g.src = '''/chart/h?id=%s&start=%s''' %(tmp_graph_id, start or (0-graph.timespan))
+                new_g.src = '''/dashboard/chart/h?id=%s&start=%s''' %(tmp_graph_id, start or (0-graph.timespan))
             if graph.method == 'SUM':
                 new_g.src += "&sum=on"
             else:
@@ -94,9 +94,9 @@ def _generate_graph_urls(graph, counters, endpoint_list, start, end):
             new_g = copy.deepcopy(graph)
             new_g.hosts = e
             if end:
-                new_g.src = '''/chart/k?id=%s&start=%s&end=%s''' %(tmp_graph_id, start or (0-graph.timespan), end)
+                new_g.src = '''/dashboard/chart/k?id=%s&start=%s&end=%s''' %(tmp_graph_id, start or (0-graph.timespan), end)
             else:
-                new_g.src = '''/chart/k?id=%s&start=%s''' %(tmp_graph_id, start or (0-graph.timespan))
+                new_g.src = '''/dashboard/chart/k?id=%s&start=%s''' %(tmp_graph_id, start or (0-graph.timespan))
             if graph.method == 'SUM':
                 new_g.src += "&sum=on"
             else:
@@ -110,9 +110,9 @@ def _generate_graph_urls(graph, counters, endpoint_list, start, end):
             return []
         new_g = copy.deepcopy(graph)
         if end:
-            new_g.src = '''/chart/a?id=%s&start=%s&end=%s''' %(tmp_graph_id, start or (0-graph.timespan), end)
+            new_g.src = '''/dashboard/chart/a?id=%s&start=%s&end=%s''' %(tmp_graph_id, start or (0-graph.timespan), end)
         else:
-            new_g.src = '''/chart/a?id=%s&start=%s''' %(tmp_graph_id, start or (0-graph.timespan))
+            new_g.src = '''/dashboard/chart/a?id=%s&start=%s''' %(tmp_graph_id, start or (0-graph.timespan))
         if graph.method == 'SUM':
             new_g.src += "&sum=on"
         else:

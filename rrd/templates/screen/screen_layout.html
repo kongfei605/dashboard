@@ -71,14 +71,14 @@ $(function(){
 
                                             <li>
                                             {%set big_graph = graph.src.replace("graph_type=h", "").replace("graph_type=k", "").replace("graph_type=a", "")%}
-                                            {%if graph.src.find("/chart/h") >=0 %}
-                                                {%set big_graph = graph.src.replace("/chart/h", "/chart/big")%}
+                                            {%if graph.src.find("/dashboard/chart/h") >=0 %}
+                                                {%set big_graph = graph.src.replace("/dashboard/chart/h", "/dashboard/chart/big")%}
                                                 <a href="{{big_graph|safe}}&start=-86400&graph_type=h" target="__blank" class="btn btn-link btn-xs">查看大图</a>
-                                            {%elif graph.src.find("/chart/k") >=0%}
-                                                {%set big_graph = graph.src.replace("/chart/k", "/chart/big")%}
+                                            {%elif graph.src.find("/dashboard/chart/k") >=0%}
+                                                {%set big_graph = graph.src.replace("/dashboard/chart/k", "/dashboard/chart/big")%}
                                                 <a href="{{big_graph|safe}}&start=-86400&graph_type=k" target="__blank" class="btn btn-link btn-xs">查看大图</a>
                                             {%else%}
-                                                {%set big_graph = graph.src.replace("/chart/a", "/chart/big")%}
+                                                {%set big_graph = graph.src.replace("/dashboard/chart/a", "/dashboard/chart/big")%}
                                                 <a href="{{big_graph|safe}}&start=-86400&graph_type=a" target="__blank" class="btn btn-link btn-xs">查看大图</a>
                                             {%endif%}
                                             </li>

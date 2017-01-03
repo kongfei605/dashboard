@@ -9,14 +9,14 @@ angular.module('app', ['app.util','angular-multi-check'])
 function BigCtrl(FlotServ, $scope, $interval, $timeout, $filter) {
     var vm = this;
 
-    var urlH = '/chart/h';
+    var urlH = '/dashboard/chart/h';
     var defaultParam = FlotServ.getParam();
     var graph_type = defaultParam.graph_type;
 
     if (graph_type === 'k') {
-        urlH = '/chart/k';
+        urlH = '/dashboard/chart/k';
     } else if (graph_type === 'a') {
-        urlH = '/chart/a';
+        urlH = '/dashboard/chart/a';
     }
 
     vm.chart = {}; // 前端的图, 对应后端的返回
